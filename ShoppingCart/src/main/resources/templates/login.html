@@ -20,11 +20,15 @@
       z-index: -10;
       height: 100%;
     }
+    
+   
 
     
 
     img{
-      height: 10%;
+      height: 100%;
+      margin-left:80%;
+      padding-top:200px;
       
     }
   </style>
@@ -69,8 +73,8 @@
   <div class="container">
     <div class="row">
         <div class="col-sm-6">
-            <h2 style="color: white;">Login</h2>
-            <p style="color: white;">Please fill out this to login</p>
+            
+           <!--
             <form th:action="@{/login}" action="./index.html" method="post">
                 <div class="form-group">
                     <label for="email" style="color: white;">Email</label>
@@ -90,11 +94,11 @@
                                                 th:href="@{/register}">Register here</a></span>
                 <br>
                 <a class="text-danger" href="" th:href="@{/forgotpassword}">Forgot password ?</a>
-            </form>
+            </form>-->
             
-            <h3 style="font-weight: bold; color: rgb(7, 7, 7);">OR</h3>
+            
             <a href="/oauth2/authorization/google" class=" GoogleImg">
-              <img  th:src="@{productImages/btn_google_signin_light_normal_web@2x.png}"> 
+              <img  th:src="@{productImages/btn_google_signin_light_normal_web@2x.png}" height="200px" width="300px"> 
             </a>
 
         </div>

@@ -66,21 +66,29 @@ public class AdminController {
 
 	// handler to delete category by id
 	@GetMapping("/admin-dashboard/categories/delete/{categoryId}")
-	public String deleteCategories(@PathVariable int categoryId) {
-		this.categoryService.deleteCategoryById(categoryId);
-		return "redirect:/shopping-cart/admin/admin-dashboard/categories";
+	public String deleteCategories(@PathVariable int categoryId , Model model) {
+		try {
+			this.categoryService.deleteCategoryById(categoryId);
+			return "redirect:/shopping-cart/admin/admin-dashboard/categories";
+		} catch (Exception e) {
+			 model.addAttribute("message","There are products present in this category");
+			return "redirect:/shopping-cart/admin/admin-dashboard/categories";
+		}
 	}
 
 	// handler to update category by id
 	@GetMapping("/admin-dashboard/categories/update/{categoryId}")
 	public String updateCategories(@PathVariable int categoryId, Model model) {
-		Optional<Category> categoryById = this.categoryService.getCategoryById(categoryId);
-		if (categoryById.isPresent()) {
-			model.addAttribute("category", categoryById.get());
-			return "addCategories";
-		} else {
-			return "404";
-		}
+		
+			Optional<Category> categoryById = this.categoryService.getCategoryById(categoryId);
+			if (categoryById.isPresent()) {
+				model.addAttribute("category", categoryById.get());
+				return "addCategories";
+			} else {
+				return "displayCategories";
+			}
+		
+		
 
 	}
 
